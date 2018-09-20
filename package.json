@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/RuntuProduct/journal_web/issues"
   },
-  "homepage": "https://github.com/RuntuProduct/journal_web#readme"
+  "homepage": "https://github.com/RuntuProduct/journal_web#readme",
+  "devDependencies": {
+    "umi": "^2.0.3"
+  }
 }
