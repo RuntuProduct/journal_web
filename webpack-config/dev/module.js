@@ -77,7 +77,7 @@ module.exports = (conf) => {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: '/static/img/[hash].[ext]',
+              name: 'static/img/[hash].[ext]',
             },
           },
         ],
@@ -88,7 +88,7 @@ module.exports = (conf) => {
         include: SRC,
         loader: 'file-loader',
         options: {
-          name: '/static/fonts/[hash].[ext]',
+          name: 'static/fonts/[hash].[ext]',
         },
       },
     ],
