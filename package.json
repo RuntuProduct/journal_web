@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/RuntuProduct/journal_web#readme",
   "devDependencies": {
-    "umi": "^2.0.3"
+    "umi": "^2.0.3",
+    "umi-plugin-dva": "^1.0.1"
   }
 }

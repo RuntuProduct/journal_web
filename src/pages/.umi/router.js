@@ -4,13 +4,18 @@ import dynamic from 'umi/dynamic';
 import renderRoutes from 'umi/_renderRoutes';
 
 
-let Router = DefaultRouter;
+let Router = require('dva/router').routerRedux.ConnectedRouter;
 
 let routes = [
   {
     "path": "/",
     "exact": true,
-    "component": require('../index.js').default
+    "component": require('../index/index.js').default
+  },
+  {
+    "path": "/userInfo",
+    "exact": true,
+    "component": require('../userInfo/index.js').default
   },
   {
     "component": () => React.createElement(require('D:/code/mine/journal/journal_web/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/pages', hasRoutesInConfig: false })
