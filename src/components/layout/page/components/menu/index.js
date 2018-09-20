@@ -1,6 +1,7 @@
 import les from './index.less'
 import Mark from './components/mark'
 import UserInfo from './components/userInfo'
+import Menu from './components/menu'
 
 const Menus = () => {
   return (
@@ -10,6 +11,7 @@ const Menus = () => {
       {/* 用户信息 */}
       <UserInfo />
       {/* 菜单 */}
+      <Menu />
     </div>
   )
 }
