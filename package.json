@@ -1,0 +1,22 @@
+{
+  "name": "journal_web",
+  "version": "1.0.0",
+  "description": "日记-网页端",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "init": "umi g page index",
+    "dev": "umi dev",
+    "build": "umi build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RuntuProduct/journal_web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RuntuProduct/journal_web/issues"
+  },
+  "homepage": "https://github.com/RuntuProduct/journal_web#readme"
+}
