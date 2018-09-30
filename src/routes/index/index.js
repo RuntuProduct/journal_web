@@ -1,7 +1,14 @@
-import styles from './index.css';
+import les from './index.less';
+import {
+  DayNote,
+} from '@com'
 
 export default function() {
   return (
-    <div>111</div>
+    <div>
+      <div className={les.lab}>
+        <DayNote />
+      </div>
+    </div>
   );
 }

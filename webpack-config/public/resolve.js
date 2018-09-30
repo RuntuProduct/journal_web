@@ -7,6 +7,7 @@ module.exports = ({
     extensions: ['.js', '.jsx'],
     alias: {
       '@': SRC,
+      '@com': path.resolve(SRC, './components/com'),
       '@layout': path.resolve(SRC, './components/layout'),
       '@services': path.resolve(SRC, 'services'),
       '@static': path.resolve(SRC, 'static'),
