@@ -4,6 +4,7 @@ import {
 } from 'antd'
 import {
   Title,
+  Budget,
 } from '@com'
 
 const DayLab = () => {
@@ -11,7 +12,10 @@ const DayLab = () => {
     <div className={les.container}>
       {/* 标题 */}
       <Title label={'日目标'} />
-      <div>content</div>
+      <div>
+        {/* 预算使用情况 */}
+        <Budget spand={100} budget={420} />
+      </div>
     </div>
   )
 }
