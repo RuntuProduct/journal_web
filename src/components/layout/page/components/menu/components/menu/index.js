@@ -4,9 +4,9 @@ const Menu = () => {
   // 属性提取
   const menuList = [
     { path: '/', label: '主页' },
-    { path: '/year', label: '年结算' },
-    { path: '/month', label: '月结算' },
-    { path: '/date', label: '日结算' },
+    { path: '/year', label: '年视图' },
+    { path: '/month', label: '月视图' },
+    { path: '/date', label: '日视图' },
   ]
 
   // 渲染方法定义
