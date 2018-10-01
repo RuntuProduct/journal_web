@@ -24,7 +24,7 @@ const app = dva({
 app.use(createLoading())
 
 // 3. Register global model
-// app.model(require('./models/app').default(LANG))
+app.model(require('./models/app').default)
 // app.model(require('./models/maps').default)
 // app.model(require('./models/quest').default)
 

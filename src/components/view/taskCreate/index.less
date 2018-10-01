@@ -1,0 +1,22 @@
+@size: 48px;
+
+.container {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: @size;
+  height: @size;
+  overflow: hidden;
+  border-radius: @size/2;
+
+  .fullBody {
+    width: @size;
+    height: @size;
+    line-height: @size;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: @theme_color_08;
+    color: #fff;
+  }
+}
