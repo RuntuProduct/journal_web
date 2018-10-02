@@ -15,5 +15,6 @@ module.exports = (conf) => {
     // open: true,
     hot: true,
     quiet: true,
+    historyApiFallback: true,
   }
 }

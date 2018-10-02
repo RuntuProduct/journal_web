@@ -29,7 +29,9 @@ class FormCreate extends React.Component {
     }
 
     return (
-      <Form>
+      <Form
+        layout="vertical"
+      >
         <FormItem
           {...formItemLayout}
           label="任务周期"

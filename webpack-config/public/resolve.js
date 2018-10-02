@@ -11,6 +11,7 @@ module.exports = ({
       '@layout': path.resolve(SRC, './components/layout'),
       '@services': path.resolve(SRC, 'services'),
       '@static': path.resolve(SRC, 'static'),
+      '@net': path.resolve(SRC, 'utils/net'),
     },
   }
 }

@@ -21,9 +21,12 @@
   "homepage": "https://github.com/RuntuProduct/journal_web#readme",
   "dependencies": {
     "antd": "^3.9.0",
+    "axios": "^0.18.0",
     "dva": "^2.4.0",
     "dva-loading": "^2.0.5",
     "dva-model-extend": "^0.1.2",
+    "nprogress": "^0.2.0",
+    "path-to-regexp": "^2.4.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },

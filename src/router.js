@@ -5,7 +5,7 @@ import dynamic from 'dva/dynamic'
 import C_ERROR from './routes/error'
 import C_APP from './routes/app'
 import C_INDEX_PAGE from './routes/index'
-// import C_MAPS from './routes/maps'
+import C_LOGIN from './routes/login'
 // import C_QUEST from './routes/quest'
 
 const { ConnectedRouter } = routerRedux
@@ -74,6 +74,12 @@ const RouterSetting = () => {
   
     // 路由结构对象
     const routeData = [
+      {
+        // 登录页
+        path: '/login',
+        exact: true,
+        component: C_LOGIN,
+      },
       {
         // 首页
         path: '/',
