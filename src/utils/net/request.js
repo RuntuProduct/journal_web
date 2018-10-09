@@ -114,12 +114,14 @@ export default function request (options) {
     .catch((error) => {
       NProgress.done()
       const { response } = error
-      // console.log(response)
+      console.log(response)
       let status
       let data
       if (response) {
         status = response.status
-        data = response.data || response.statusText
+        data = response.data ?
+          response.data.data :
+          response.statusText
         
         if (errCodeGlobal.indexOf(status) !== -1) {
           message.error(`${status} - ${data}`)
@@ -130,7 +132,7 @@ export default function request (options) {
       }
       return {
         success: false,
-        status, message:
+        status,
         data,
       }
     })
