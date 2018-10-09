@@ -12,7 +12,7 @@ const errCodeGlobal = [
 
 axios.defaults.baseURL = baseURL
 axios.defaults.timeout = 1000
-axios.defaults.withCredentials = true
+// axios.defaults.withCredentials = true
 
 const fetch = (options) => {
   let {
