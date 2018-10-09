@@ -4,5 +4,6 @@ module.exports = {
     login: '/login',
     logout: 'logout',
     user: '/user',
+    task: '/task',
   },
 }

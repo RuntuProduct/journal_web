@@ -1,12 +1,5 @@
 import { request, api } from '@net'
 
-export function list () {
-  return request({
-    method: 'get',
-    url: api.user,
-  })
-}
-
 export function login (data) {
   return request({
     method: 'post',

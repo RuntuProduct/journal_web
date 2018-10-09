@@ -8,10 +8,17 @@ const UserInfo = ({
   dispatch,
   app,
 }) => {
+  // 提取属性
+  const {
+    user,
+  } = app
+
+  // 方法定义
   /** 退出登录 */
   const logout = () => {
     dispatch({ type: 'app/logout' })
   }
+
   return (
     <div className={les.container}>
       <div className={les.userInfo}>
@@ -19,7 +26,7 @@ const UserInfo = ({
           <img src={require('@static/user.jpg')} alt=""/>
         </div>
         <div className={les.info}>
-          <div className={les.name}>默认用户1231312312333</div>
+          <div className={les.name}>{user.username}</div>
           <div className={les.setting}>
             {/* 退出登录 */}
             <Tooltip
