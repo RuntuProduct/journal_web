@@ -2,7 +2,7 @@ import moduleExtend from 'dva-model-extend'
 import pathToRegexp from 'path-to-regexp'
 import { model } from '../utils/model'
 import { routerRedux } from 'dva/router'
-import LG from '@/utils/localStorage'
+import CO from '@/utils/cookies'
 import {
   userInfo,
   login,
@@ -53,7 +53,7 @@ export default moduleExtend(model, {
     },
     /** 检查登录 */
     * checkLogin (inVal, { select, put, call }) {
-      const userId = LG.get('userId')
+      const userId = CO.get('userId')
       console.log(userId)
       const targetPath = '/login'
       if (!userId) {
@@ -74,7 +74,6 @@ export default moduleExtend(model, {
       const { success, data } = yield call(login, netData)
       if (success) {
         console.log(data)
-        LG.set('userId', data._id)
         message.success('登录成功')
         yield put(routerRedux.push('/'))
       } else {

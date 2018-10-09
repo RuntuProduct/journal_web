@@ -1,5 +1,6 @@
 import './polyfill'
 import dva from 'dva'
+import { message } from 'antd'
 
 // import createHistory from 'history/createHashHistory'
 // user BrowserHistory
@@ -18,6 +19,9 @@ const app = dva({
   history: createHistory({
     basename: basePath,
   }),
+  onError: (err, dispatch) => {
+    message.error(err.message, /* duration */3);
+  },
 })
 
 // 2. Plugins
