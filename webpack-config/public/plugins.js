@@ -10,12 +10,6 @@ module.exports = ({
   PUBLIC_PATH,
 }) => {
   return [
-    // 配置 dll
-    new webpack.DllReferencePlugin({
-      context: STATIC_DIR,
-      manifest: path.resolve(DLL_DIR, './manifest.json'),
-      name: 'dll',
-    }),
     // 复制资源文件
     new CopyWebpackPlugin([
       {

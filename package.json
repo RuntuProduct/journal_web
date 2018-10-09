@@ -43,6 +43,7 @@
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-include-assets-plugin": "^1.0.5",
     "html-webpack-plugin": "^4.0.0-alpha",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
