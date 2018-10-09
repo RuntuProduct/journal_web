@@ -6,6 +6,7 @@ import CO from '@/utils/cookies'
 import {
   userInfo,
   login,
+  logout,
 } from '@/services/user'
 import {
   message,
@@ -53,20 +54,13 @@ export default moduleExtend(model, {
     },
     /** 检查登录 */
     * checkLogin (inVal, { select, put, call }) {
-      const userId = CO.get('userId')
-      console.log(userId)
       const targetPath = '/login'
-      if (!userId) {
-        message.warn('你还未登录')
-        yield put(routerRedux.push(targetPath))
+      const { success, data } = yield call(userInfo)
+      if (success) {
+        message.success(`欢迎回来，${data.username}`)
       } else {
-        const { success, data } = yield call(userInfo, { userId })
-        if (success) {
-          message.success(`欢迎回来，${data.username}`)
-        } else {
-          message.warn(`登录信息失效: ${data}`)
-          yield put(routerRedux.push(targetPath))
-        }
+        message.warn(`登录信息失效: ${data}`)
+        yield put(routerRedux.push(targetPath))
       }
     },
     /** 用户登录 */
@@ -76,6 +70,16 @@ export default moduleExtend(model, {
         console.log(data)
         message.success('登录成功')
         yield put(routerRedux.push('/'))
+      } else {
+        throw new Error(data)
+      }
+    },
+    /** 退出登录 */
+    * logout (inVal, { call, put }) {
+      const { success, data } = yield call(logout)
+      if (success) {
+        message.success(data)
+        yield put(routerRedux.push('/login'))
       } else {
         throw new Error(data)
       }

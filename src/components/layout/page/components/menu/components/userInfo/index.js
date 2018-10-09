@@ -4,7 +4,14 @@ import {
 } from 'antd'
 import les from './index.less'
 
-const UserInfo = () => {
+const UserInfo = ({
+  dispatch,
+  app,
+}) => {
+  /** 退出登录 */
+  const logout = () => {
+    dispatch({ type: 'app/logout' })
+  }
   return (
     <div className={les.container}>
       <div className={les.userInfo}>
@@ -18,7 +25,7 @@ const UserInfo = () => {
             <Tooltip
               placement='bottom'
               title='退出登录'
-            ><Icon type="logout" /></Tooltip>
+            ><Icon type="logout" onClick={logout} /></Tooltip>
           </div>
         </div>
       </div>

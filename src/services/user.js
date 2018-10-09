@@ -1,26 +1,30 @@
 import { request, api } from '@net'
 
-const { user } = api
-
 export function list () {
   return request({
     method: 'get',
-    url: user,
+    url: api.user,
   })
 }
 
 export function login (data) {
   return request({
     method: 'post',
-    url: user,
+    url: api.login,
     data,
   })
 }
 
-export function userInfo (data) {
+export function logout() {
+  return request({
+    method: 'post',
+    url: api.logout,
+  })
+}
+
+export function userInfo () {
   return request({
     method: 'get',
-    url: user,
-    data,
+    url: api.user,
   })
 }
