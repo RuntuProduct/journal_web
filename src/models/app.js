@@ -1,5 +1,6 @@
 import moduleExtend from 'dva-model-extend'
 import pathToRegexp from 'path-to-regexp'
+import axios from 'axios'
 import { model } from '../utils/model'
 import { routerRedux } from 'dva/router'
 import {
@@ -25,8 +26,17 @@ export default moduleExtend(model, {
 
   subscriptions: {
     setup({ dispatch, history }) {
-      // 初始化登录态检查
-      dispatch({ type: 'initCheckLogin' })
+      dispatch({ type: 'initUser' })
+      // 监视登录态变更
+      axios.interceptors.response.use((response) => {
+        // Do something with response data
+        const { status } = response
+        dispatch({ type: 'checkLogin', status })
+        return response
+      }, function (error) {
+        // Do something with response error
+        return Promise.reject(error)
+      })
       history.listen(({ pathname }) => {
         const match = pathToRegexp('/:other').exec(pathname)
         // 进入路由，获取数据
@@ -41,21 +51,8 @@ export default moduleExtend(model, {
   },
 
   effects: {
-    /** 初始化登录检查事件 */
-    * initCheckLogin (inVal, { takeEvery, select, put }) {
-      console.log('执行了')
-      yield takeEvery(
-        '@@router/LOCATION_CHANGE',
-        function* logger(action) {
-          const { location } = yield select(({ routing }) => routing)
-          if (location && location.pathname !== '/login') {
-            yield put({ type: 'checkLogin' })
-          }
-        }
-      )
-    },
-    /** 检查登录 */
-    * checkLogin (inVal, { select, put, call }) {
+    /** 获取用户信息 */
+    * initUser (inVal, { select, put, call }) {
       const targetPath = '/login'
       const { success, data } = yield call(userInfo)
       if (success) {
@@ -68,6 +65,17 @@ export default moduleExtend(model, {
         message.warn(`登录信息失效: ${data}`)
         yield put(routerRedux.push(targetPath))
       }
+
+    },
+    * checkLogin ({ status }, { put }) {
+      // 登录态过期拦截
+      console.log(1)
+      if (status === 401) {
+        message.warn('登录态失效，请重新登录')
+        // window.location = '/login'
+        console.log(2)
+        yield put(routerRedux.replace('/login'))
+      }
     },
     /** 用户登录 */
     * login ({ netData }, { call, put }) {
@@ -79,10 +87,10 @@ export default moduleExtend(model, {
           type: 'updateState',
           payload: { user: data },
         })
-        yield put(routerRedux.push('/'))
       } else {
         throw new Error(data)
       }
+      yield put(routerRedux.push('/'))
     },
     /** 退出登录 */
     * logout (inVal, { call, put }) {
