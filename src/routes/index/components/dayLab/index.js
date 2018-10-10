@@ -1,13 +1,18 @@
 import les from './index.less'
 import {
-  Icon,
-} from 'antd'
-import {
   Title,
   Budget,
+  TaskList,
 } from '@com'
 
-const DayLab = () => {
+const DayLab = ({
+  list,
+}) => {
+  // 属性定义
+  const propsOfTaskList = {
+    data: list,
+  }
+
   return (
     <div className={les.container}>
       {/* 标题 */}
@@ -15,6 +20,7 @@ const DayLab = () => {
       <div>
         {/* 预算使用情况 */}
         {/* <Budget spand={100} budget={420} /> */}
+        <TaskList {...propsOfTaskList} />
       </div>
     </div>
   )

@@ -7,3 +7,10 @@ export function create (data) {
     data,
   })
 }
+
+export function fullList () {
+  return request({
+    method: 'get',
+    url: api.task,
+  })
+}

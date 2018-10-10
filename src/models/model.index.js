@@ -1,14 +1,17 @@
 import moduleExtend from 'dva-model-extend'
 import { model } from '../utils/model'
 import {
-  userInfo,
-} from '@/services/user'
+  fullList,
+} from '@/services/task'
 
 export default moduleExtend(model, {
   namespace: 'index',
 
   state: {
-    // 
+    dayList: [],
+    weekList: [],
+    monthList: [],
+    yearList: [],
   },
 
   subscriptions: {
@@ -23,8 +26,16 @@ export default moduleExtend(model, {
   },
 
   effects: {
-    * getList (inVal, { call }) {
-      yield call(userInfo)
+    * getList (inVal, { call, put }) {
+      const { success, data } = yield call(fullList)
+      if (success) {
+        yield put({
+          type: 'updateState',
+          payload: { ...data },
+        })
+      } else {
+        throw new Error(data)
+      }
     }
   }
 })
