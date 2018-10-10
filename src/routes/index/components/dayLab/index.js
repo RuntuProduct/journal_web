@@ -14,7 +14,7 @@ const DayLab = () => {
       <Title label={'日目标'} />
       <div>
         {/* 预算使用情况 */}
-        <Budget spand={100} budget={420} />
+        {/* <Budget spand={100} budget={420} /> */}
       </div>
     </div>
   )
