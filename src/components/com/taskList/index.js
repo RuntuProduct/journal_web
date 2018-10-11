@@ -1,4 +1,8 @@
-import { Checkbox } from 'antd'
+import {
+  Checkbox,
+  Icon,
+  Tooltip,
+} from 'antd'
 import les from './index.less'
 
 const TaskList = ({
@@ -13,8 +17,13 @@ const TaskList = ({
           className={les.item}
         >
           <div className={les.wrapper}>
-            <Checkbox />
-            {ar.title}
+            <div className={les.wrapCb}>
+              <Checkbox />
+            </div>
+            <div className={les.wrapTit}>{ar.title}</div>
+            <div className={`${les.wrapDesc} ${ar.desc ? '' : les.hidden}`}>
+              <Tooltip title={ar.desc}><Icon type="profile" /></Tooltip>
+            </div>
           </div>
         </li>
       )

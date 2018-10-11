@@ -15,28 +15,31 @@ import {
   message,
 } from 'antd'
 
-
 export default moduleExtend(model, {
   namespace: 'app',
 
   state: {
     user: {},
+    checkLogin: false,
     modalTaskCreateVisible: false, // 添加任务弹窗可视状态
   },
 
   subscriptions: {
     setup({ dispatch, history }) {
-      dispatch({ type: 'initUser' })
       // 监视登录态变更
       axios.interceptors.response.use((response) => {
         // Do something with response data
-        const { status } = response
-        dispatch({ type: 'checkLogin', status })
         return response
       }, function (error) {
+        const { response } = error
+        const { status } = response
+        if (status === 401) {
+          dispatch({ type: 'notLogin' })
+        }
         // Do something with response error
         return Promise.reject(error)
       })
+      dispatch({ type: 'initUser' })
       history.listen(({ pathname }) => {
         const match = pathToRegexp('/:other').exec(pathname)
         // 进入路由，获取数据
@@ -53,8 +56,7 @@ export default moduleExtend(model, {
   effects: {
     /** 获取用户信息 */
     * initUser (inVal, { select, put, call }) {
-      const targetPath = '/login'
-      const { success, data } = yield call(userInfo)
+      const { success, status, data } = yield call(userInfo)
       if (success) {
         message.success(`欢迎回来，${data.username}`)
         yield put({
@@ -62,19 +64,19 @@ export default moduleExtend(model, {
           payload: { user: data },
         })
       } else {
-        message.warn(`登录信息失效: ${data}`)
-        yield put(routerRedux.push(targetPath))
+        // yield put({ type: 'notLogin' })
       }
-
     },
-    * checkLogin ({ status }, { put }) {
-      // 登录态过期拦截
-      console.log(1)
-      if (status === 401) {
+    * notLogin (inVal, { select, put }) {
+      const { checkLogin } = yield select(({ app }) => app)
+      if (!checkLogin) {
+        // 登录态过期拦截
         message.warn('登录态失效，请重新登录')
-        // window.location = '/login'
-        console.log(2)
         yield put(routerRedux.replace('/login'))
+        yield put({
+          type: 'updateState',
+          payload: { checkLogin: true },
+        })
       }
     },
     /** 用户登录 */

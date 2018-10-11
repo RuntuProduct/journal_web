@@ -1,3 +1,5 @@
+@wrap_hei: 24px;
+
 .container {
   padding-top: 8px;
   padding-bottom: 1px;
@@ -7,9 +9,36 @@
     margin: 0 8px 8px;
 
     .wrapper {
+      display: flex;
       padding: 12px 10px;
       background-color: @theme_color_white;
       box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+      font-style: 14px;
+    }
+    .wrapCb {
+      height: @wrap_hei;
+      line-height: @wrap_hei;
+      padding-right: 8px;
+      cursor: pointer;
+    }
+    .wrapTit {
+      height: @wrap_hei;
+      line-height: @wrap_hei;
+      flex: 1;
+      color: @theme_color_black;
+      .ellipsis();
+    }
+    .wrapDesc {
+      height: @wrap_hei;
+      line-height: @wrap_hei;
+
+      :global(.anticon) {
+        font-size: 16px;
+        color: @theme_color_black;
+      }
+    }
+    .hidden {
+      display: none;
     }
   }
   .itemBlank {
