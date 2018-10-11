@@ -90,7 +90,7 @@ class ModalCreate extends React.Component {
           >
             {getFieldDecorator('desc', {
               initialValue: '',
-              rules: [{ required: true, message: '请输入待办描述' }],
+              // rules: [{ required: true, message: '请输入待办描述' }],
             })(
               <TextArea placeholder="待办描述" />
             )}
