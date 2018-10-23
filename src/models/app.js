@@ -7,6 +7,7 @@ import {
   userInfo,
   login,
   logout,
+  signup,
 } from '@/services/user'
 import {
   create,
@@ -97,6 +98,16 @@ export default moduleExtend(model, {
     /** 退出登录 */
     * logout (inVal, { call, put }) {
       const { success, data } = yield call(logout)
+      if (success) {
+        message.success(data)
+        yield put(routerRedux.push('/login'))
+      } else {
+        throw new Error(data)
+      }
+    },
+    /** 注册账号 */
+    * signup ({ payload }, { call, put }) {
+      const { success, data } = yield call(signup, payload)
       if (success) {
         message.success(data)
         yield put(routerRedux.push('/login'))

@@ -8,7 +8,6 @@ import les from './index.less'
 
 const FormItem = Form.Item
 
-
 const hasErrors = (fieldsError) => {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
@@ -40,19 +39,12 @@ class Login extends React.Component {
       isFieldTouched,
     } = form
 
-    // Only show error after a field is touched.
-    const accountError = isFieldTouched('account') && getFieldError('account')
-    const passwordError = isFieldTouched('password') && getFieldError('password')
-
     return (
       <Form
         layout="vertical"
         onSubmit={this.handleSubmit}
       >
-        <FormItem
-          validateStatus={accountError ? 'error' : ''}
-          help={accountError || ''}
-        >
+        <FormItem>
           {getFieldDecorator('account', {
             initialValue: 'admin',
             rules: [{ required: true, message: '请输入账号' }],
@@ -68,10 +60,7 @@ class Login extends React.Component {
             />
           )}
         </FormItem>
-        <FormItem
-          validateStatus={passwordError ? 'error' : ''}
-          help={passwordError || ''}
-        >
+        <FormItem>
           {getFieldDecorator('password', {
             initialValue: '123456',
             rules: [{ required: true, message: '请输入密码' }],

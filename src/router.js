@@ -6,6 +6,7 @@ import C_ERROR from './routes/error'
 import C_APP from './routes/app'
 import C_INDEX_PAGE from './routes/index'
 import C_LOGIN from './routes/login'
+import C_SIGNUP from './routes/signup'
 // import C_QUEST from './routes/quest'
 
 const { ConnectedRouter } = routerRedux
@@ -79,6 +80,12 @@ const RouterSetting = () => {
         path: '/login',
         exact: true,
         component: C_LOGIN,
+      },
+      {
+        // 注册页
+        path: '/signup',
+        exact: true,
+        component: C_SIGNUP,
       },
       {
         // 首页

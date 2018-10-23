@@ -11,33 +11,20 @@
     width: @c_width;
     left: calc(50% - @c_width/2);
     top: calc(50% - @c_height/2);
-
+    
     :global(.ant-form-item) {
       margin-bottom: @layout_spacing_vertical;
       &:last-child {
         margin-bottom: 0;
       }
     }
-    .submit {
-      width: 100%;
-      color: @theme_color_black;
 
-      &.active,
-      &:hover {
-        color: @theme_color_white;
-        border-color: @theme_color_black;
-        background-color: @theme_color_black;
-      }
+    .submit,
+    .back {
+      width: calc(50% - 6px);
     }
-
-    .signup,
-    .forgetPwd {
-      display: inline-block;
-      width: 50%;
-      line-height: 20px;
-    }
-    .forgetPwd {
-      text-align: right;
+    .back {
+      margin-left: 12px;
     }
   }
 }

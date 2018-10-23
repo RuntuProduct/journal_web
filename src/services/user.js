@@ -21,3 +21,11 @@ export function userInfo () {
     url: api.user,
   })
 }
+
+export function signup(data) {
+  return request({
+    method: 'post',
+    url: api.signup,
+    data,
+  })
+}
