@@ -16,6 +16,8 @@ export default moduleExtend(model, {
 
   subscriptions: {
     setup({ dispatch, history }) {
+      // 初始化数据更新监听
+      dispatch({ type: 'initWatch' })
       history.listen(({ pathname }) => {
         // 进入路由，获取数据
         if (pathname === '/') {
@@ -26,6 +28,15 @@ export default moduleExtend(model, {
   },
 
   effects: {
+    /** 初始化数据更新监听 */
+    * initWatch (inVal, { takeEvery, put }) {
+      // console.log(this)
+      yield takeEvery(['app/createTask/@@end'], function* () {
+        yield put({ type: 'getList' })
+      })
+      // console.log(ifGe)
+    },
+    /** 获取列表 */
     * getList (inVal, { call, put }) {
       const { success, data } = yield call(fullList)
       if (success) {

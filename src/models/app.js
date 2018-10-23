@@ -115,7 +115,7 @@ export default moduleExtend(model, {
     * createTask ({ payload }, { call, put }) {
       const { success, data } = yield call(create, payload)
       if (success) {
-        message.success(data)
+        message.success('新增成功')
         yield put({ type: 'showTaskCreate', show: false })
       } else {
         throw new Error(data)
