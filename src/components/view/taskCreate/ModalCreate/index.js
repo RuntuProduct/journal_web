@@ -61,7 +61,7 @@ class ModalCreate extends React.Component {
             {...formItemLayout}
             label="任务周期"
           >
-            {getFieldDecorator('type', {
+            {getFieldDecorator('t_type', {
               initialValue: 'day',
               rules: [{ required: true, message: '请选择任务周期' }],
             })(
@@ -88,7 +88,7 @@ class ModalCreate extends React.Component {
             {...formItemLayout}
             label="待办描述"
           >
-            {getFieldDecorator('desc', {
+            {getFieldDecorator('description', {
               initialValue: '',
               // rules: [{ required: true, message: '请输入待办描述' }],
             })(
