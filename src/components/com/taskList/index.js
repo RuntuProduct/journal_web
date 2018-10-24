@@ -31,7 +31,7 @@ const TaskList = ({
       return (
         <li
           key={ar.id}
-          className={les.item}
+          className={`${les.item} ${ar.completed === 'Y' ? les.completed : ''}`}
         >
           <div className={les.wrapper}>
             <div className={les.wrapCb}>

@@ -8,6 +8,16 @@
   .item {
     margin: 0 8px 8px;
 
+    &.completed {
+      .wrapper {
+        background-color: @theme_color_03;
+      }
+      :global(.ant-checkbox-inner) {
+        background-color: @theme_color_06;
+        border-color: @theme_color_06;
+      }
+    }
+
     .wrapper {
       position: relative;
       display: flex;
@@ -15,6 +25,11 @@
       background-color: @theme_color_white;
       box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
       font-style: 14px;
+      transition: all ease .3s;
+
+      &:hover {
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+      }
     }
     .wrapCb {
       height: @wrap_hei;
@@ -46,7 +61,7 @@
       position: absolute;
       display: flex;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(@theme_color_gray, .2);
+      // background-color: rgba(@theme_color_gray, .2);
       align-items: center;
       justify-content: center;
       z-index: 1000;
