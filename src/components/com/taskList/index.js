@@ -2,28 +2,56 @@ import {
   Checkbox,
   Icon,
   Tooltip,
+  Spin,
 } from 'antd'
 import les from './index.less'
 
 const TaskList = ({
+  dispatch,
+  loading,
   data,
 }) => {
+  // props definition
+  const ifLoading = loading.effects['index/completeTask'] || loading.effects['index/getList']
+
+  // function definition
+  const handleCheck = (id, nowCheck) => {
+    dispatch({
+      type: 'index/completeTask',
+      payload: {
+        id,
+        completed: nowCheck === 'Y' ? 'N' : 'Y',
+      },
+    })
+  }
+  
   // 渲染方法定义
   const mapTask = (ary) => {
     return ary.map((ar) => {
       return (
         <li
-          key={ar._id}
+          key={ar.id}
           className={les.item}
         >
           <div className={les.wrapper}>
             <div className={les.wrapCb}>
-              <Checkbox />
+              <Checkbox
+                disabled={ifLoading}
+                checked={ar.completed === 'Y'}
+                onChange={() => handleCheck(ar.id, ar.completed)}
+              />
             </div>
             <div className={les.wrapTit}>{ar.title}</div>
-            <div className={`${les.wrapDesc} ${ar.desc ? '' : les.hidden}`}>
-              <Tooltip title={ar.desc}><Icon type="profile" /></Tooltip>
+            <div className={`${les.wrapDesc} ${ar.description ? '' : les.hidden}`}>
+              <Tooltip title={ar.description}><Icon type="profile" /></Tooltip>
             </div>
+            { 
+              ifLoading &&
+              <Spin
+                className={les.loadingWrapper}
+                spinning={ifLoading}
+              />
+            }
           </div>
         </li>
       )

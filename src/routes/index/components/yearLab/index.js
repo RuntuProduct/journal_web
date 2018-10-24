@@ -5,10 +5,14 @@ import {
 } from '@com'
 
 const MonthLab = ({
+  dispatch,
+  loading,
   list,
 }) => {
   // 属性定义
   const propsOfTaskList = {
+    dispatch,
+    loading,
     data: list,
   }
 

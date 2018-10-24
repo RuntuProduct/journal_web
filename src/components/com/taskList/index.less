@@ -9,6 +9,7 @@
     margin: 0 8px 8px;
 
     .wrapper {
+      position: relative;
       display: flex;
       padding: 12px 10px;
       background-color: @theme_color_white;
@@ -39,6 +40,16 @@
     }
     .hidden {
       display: none;
+    }
+
+    .loadingWrapper {
+      position: absolute;
+      display: flex;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(@theme_color_gray, .2);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     }
   }
   .itemBlank {

@@ -6,10 +6,14 @@ import {
 } from '@com'
 
 const DayLab = ({
+  dispatch,
+  loading,
   list,
 }) => {
   // 属性定义
   const propsOfTaskList = {
+    dispatch,
+    loading,
     data: list,
   }
 

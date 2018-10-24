@@ -14,3 +14,11 @@ export function fullList () {
     url: api.task,
   })
 }
+
+export function complete (data) {
+  return request({
+    method: 'post',
+    url: api.taskComplete,
+    data,
+  })
+}

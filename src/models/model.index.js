@@ -2,6 +2,7 @@ import moduleExtend from 'dva-model-extend'
 import { model } from '../utils/model'
 import {
   fullList,
+  complete,
 } from '@/services/task'
 
 export default moduleExtend(model, {
@@ -47,6 +48,15 @@ export default moduleExtend(model, {
       } else {
         throw new Error(data)
       }
-    }
+    },
+    /** 完成任务 */
+    * completeTask ({ payload }, { call, put }) {
+      const { success, data } = yield call(complete, payload)
+      if (success) {
+        yield put({ type: 'getList' })
+      } else {
+        throw new Error(data)
+      }
+    },
   }
 })

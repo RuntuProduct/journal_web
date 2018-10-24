@@ -6,5 +6,6 @@ module.exports = {
     signup: '/signup',
     user: '/user',
     task: '/task',
+    taskComplete: '/task/complete',
   },
 }
