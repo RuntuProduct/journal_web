@@ -37,6 +37,7 @@ const Target = ({
     dispatch,
     loading,
     list: yearList,
+    index,
   }
 
   return (

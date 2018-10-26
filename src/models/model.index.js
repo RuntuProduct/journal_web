@@ -13,6 +13,7 @@ export default moduleExtend(model, {
     weekList: [],
     monthList: [],
     yearList: [],
+    modalBudgetVisible: false,
   },
 
   subscriptions: {
@@ -36,6 +37,13 @@ export default moduleExtend(model, {
         yield put({ type: 'getList' })
       })
       // console.log(ifGe)
+    },
+    /** 显示隐藏预算编辑弹窗 */
+    * showModalBudget ({ show }, { put }) {
+      yield put({
+        type: 'updateState',
+        payload: { modalBudgetVisible: show },
+      })
     },
     /** 获取列表 */
     * getList (inVal, { call, put }) {

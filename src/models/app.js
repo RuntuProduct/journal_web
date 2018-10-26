@@ -65,7 +65,7 @@ export default moduleExtend(model, {
           payload: { user: data },
         })
       } else {
-        // yield put({ type: 'notLogin' })
+        yield put({ type: 'notLogin' })
       }
     },
     * notLogin (inVal, { select, put }) {
