@@ -13,7 +13,11 @@ export default moduleExtend(model, {
     weekList: [],
     monthList: [],
     yearList: [],
-    modalBudgetVisible: false,
+    modalBudgetVisible: true,
+    modalBudgetValue: {
+      outlay: 100000,
+      income: 200000,
+    },
   },
 
   subscriptions: {

@@ -15,6 +15,7 @@ const MonthLab = ({
   // 获取属性
   const {
     modalBudgetVisible,
+    modalBudgetValue,
   } = index
   // 属性定义
   const propsOfBudgetLab = {
@@ -29,6 +30,7 @@ const MonthLab = ({
   const propsOfModalBudget = {
     dispatch,
     visible: modalBudgetVisible,
+    value: modalBudgetValue,
   }
 
   return (

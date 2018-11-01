@@ -22,7 +22,7 @@ class ModalCreate extends React.Component {
       getFieldDecorator,
     } = form
 
-    // 方法定义
+    // function definition
     const hideModal = () => {
       dispatch({ type: 'app/showTaskCreate', show: false })
     }
