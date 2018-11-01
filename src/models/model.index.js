@@ -4,6 +4,9 @@ import {
   fullList,
   complete,
 } from '@/services/task'
+import {
+  setIncomeBudget,
+} from '@/services/budget'
 
 export default moduleExtend(model, {
   namespace: 'index',
@@ -66,6 +69,15 @@ export default moduleExtend(model, {
       const { success, data } = yield call(complete, payload)
       if (success) {
         yield put({ type: 'getList' })
+      } else {
+        throw new Error(data)
+      }
+    },
+    /** 更新收入值 */
+    * updateIncome ({ payload }, { call, put }) {
+      const { success, data } = yield call(setIncomeBudget, payload)
+      if (success) {
+        //
       } else {
         throw new Error(data)
       }

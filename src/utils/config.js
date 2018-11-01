@@ -7,5 +7,6 @@ module.exports = {
     user: '/user',
     task: '/task',
     taskComplete: '/task/complete',
+    budgetIncome: '/budget/income',
   },
 }
