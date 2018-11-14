@@ -20,16 +20,6 @@ class ModalEdit extends React.Component {
       getFieldDecorator,
     } = form
 
-    // props definition
-    const propsOfModal = {
-      title: '编辑预算阈值',
-      visible,
-      width: 220,
-      onOk: handleSubmit,
-      onCancel: handleHide,
-      destroyOnClose: true,
-    }
-
     // function definition
     const handleSubmit = () => {
       form.validateFields((err, values) => {
@@ -38,6 +28,16 @@ class ModalEdit extends React.Component {
           handleChange(values)
         }
       })
+    }
+
+    // props definition
+    const propsOfModal = {
+      title: '编辑预算阈值',
+      visible,
+      width: 220,
+      onOk: handleSubmit,
+      onCancel: handleHide,
+      destroyOnClose: true,
     }
 
     return (
@@ -51,6 +51,7 @@ class ModalEdit extends React.Component {
               <InputNumber
                 placeholder='value'
                 precision={0}
+                style={{ width: '100%' }}
               />
             )}
           </FormItem>

@@ -2,9 +2,9 @@ import {
   Modal,
 } from 'antd'
 import {
-  getRemainMonth,
-  getRemainWeek,
-  getRemainDay,
+  getEntireMonth,
+  getEntireWeek,
+  getEntireDay,
 } from '@utils/func'
 import les from './index.less'
 import MoneyLab from '../moneyLab'
@@ -32,6 +32,9 @@ const ModalBudget = ({
   const net = parseInt(income - outlay, 10)
 
   // function difinition
+  const handleBudgetChange = (val) => {
+    console.log('after value: ', val)
+  }
   const initMoneyLab = (valueType, rateType) => {
     let value = income
     if (valueType === 'outlay') {
@@ -45,6 +48,7 @@ const ModalBudget = ({
         value={value}
         rateType={rateType}
         canEdit={true}
+        handleChange={handleBudgetChange}
       />
     )
   }
@@ -72,7 +76,7 @@ const ModalBudget = ({
             </td>
           </tr>
           <tr>
-            <td className={les.titleTd}>({getRemainMonth()})月</td>
+            <td className={les.titleTd}>({getEntireMonth()})月</td>
             <td className={les.incomeTd}>
               {initMoneyLab('income', 'month')}
             </td>
@@ -84,7 +88,7 @@ const ModalBudget = ({
             </td>
           </tr>
           <tr>
-            <td className={les.titleTd}>({getRemainWeek()})周</td>
+            <td className={les.titleTd}>({getEntireWeek()})周</td>
             <td className={les.incomeTd}>
               {initMoneyLab('income', 'week')}
             </td>
@@ -96,7 +100,7 @@ const ModalBudget = ({
             </td>
           </tr>
           <tr>
-            <td className={les.titleTd}>({getRemainDay()})日</td>
+            <td className={les.titleTd}>({getEntireDay()})日</td>
             <td className={les.incomeTd}>
               {initMoneyLab('income', 'day')}
             </td>

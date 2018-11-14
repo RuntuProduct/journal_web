@@ -6,16 +6,16 @@ export const getLastDay = () => {
 }
 
 /** get remain month number of this year */
-export const getRemainMonth = () => {
-  return getLastDay().month() - moment().month()
+export const getEntireMonth = () => {
+  return 12
 }
 
 /** get remain week number of this year */
-export const getRemainWeek = () => {
-  return moment().weeksInYear() - moment().week() 
+export const getEntireWeek = () => {
+  return moment().weeksInYear()
 }
 
 /** get remain day number of this year */
-export const getRemainDay = () => {
-  return getLastDay().dayOfYear() - moment().dayOfYear()
+export const getEntireDay = () => {
+  return getLastDay().dayOfYear()
 }

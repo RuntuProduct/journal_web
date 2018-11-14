@@ -2,13 +2,12 @@ import {
   Button,
 } from 'antd'
 import {
-  getRemainMonth,
-  getRemainWeek,
-  getRemainDay,
+  getEntireMonth,
+  getEntireWeek,
+  getEntireDay,
 } from '@utils/func'
 import les from './index.less'
 import ModalEdit from './modalEdit'
-import moment from 'moment'
 
 class MoneyLab extends React.Component {
   state = {
@@ -24,6 +23,7 @@ class MoneyLab extends React.Component {
   }
 
   render () {
+    // props collect
     const {
       valueType, //income,outlay,net
       value,
@@ -34,19 +34,12 @@ class MoneyLab extends React.Component {
     const {
       editModalVisible,
     } = this.state
+    const that = this
 
-    // props definition
-    const propsOfModalEdit = {
-      handleHide: this.editModalHide,
-      handleChange: updataValue,
-      visible: editModalVisible,
-      baseValue: rateValue,
-    }
-    const typeClass = les[valueType]
-    const remainMonth = getRemainMonth()
-    const remainWeek = getRemainWeek()
-    const remainDay = getRemainDay()
-
+    // props count
+    const allMonth = getEntireMonth()
+    const allWeek = getEntireWeek()
+    const allDay = getEntireDay()
     const mathValue = parseInt(value, 10)
     if (!mathValue) {
       throw new Error('invalid value')
@@ -55,26 +48,37 @@ class MoneyLab extends React.Component {
     if (rateType === 'year') {
       rateValue = mathValue.toFixed(0)
     } else if (rateType === 'month') {
-      rateValue = (mathValue / remainMonth).toFixed(0)
+      rateValue = (mathValue / allMonth).toFixed(0)
     } else if (rateType === 'week') {
-      rateValue = (mathValue / remainWeek).toFixed(0)
+      rateValue = (mathValue / allWeek).toFixed(0)
     } else if (rateType === 'day') {
-      rateValue = (mathValue / remainDay).toFixed(0)
+      rateValue = (mathValue / allDay).toFixed(0)
     } else {
       throw new Error(`invalid value ${rateType}`)
     }
 
+    const typeClass = les[valueType]
+
     // function definition
     const updataValue = ({ value }) => {
+      that.editModalHide()
       if (rateType === 'year') {
         handleChange({ value })
       } else if (rateType === 'month') {
         handleChange({ value: value * 12 })
       } else if (rateType === 'week') {
-        handleChange({ value: (value / 7 *365).toFixed(0) })
+        handleChange({ value: (value / 7 * 365).toFixed(0) })
       } else if (rateType === 'day') {
         handleChange({ value: value * 365 })
       }
+    }
+
+    // props definition
+    const propsOfModalEdit = {
+      handleHide: this.editModalHide,
+      handleChange: updataValue,
+      visible: editModalVisible,
+      baseValue: rateValue,
     }
 
     return (
