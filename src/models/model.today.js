@@ -5,17 +5,28 @@ import {
   complete,
 } from '@/services/task'
 import {
+  getToday,
+} from '@/services/summary'
+import {
   setIncomeBudget,
 } from '@/services/budget'
 
 export default moduleExtend(model, {
-  namespace: 'index',
+  namespace: 'today',
 
   state: {
-    dayList: [],
-    weekList: [],
-    monthList: [],
-    yearList: [],
+    yearData: {
+      taskList: [],
+    },
+    monthData: {
+      taskList: [],
+    },
+    weekData: {
+      taskList: [],
+    },
+    dayData: {
+      taskList: [],
+    },
     modalBudgetVisible: true,
     modalBudgetValue: {
       outlay: 100000,
@@ -54,7 +65,7 @@ export default moduleExtend(model, {
     },
     /** 获取列表 */
     * getList (inVal, { call, put }) {
-      const { success, data } = yield call(fullList)
+      const { success, data } = yield call(getToday)
       if (success) {
         yield put({
           type: 'updateState',

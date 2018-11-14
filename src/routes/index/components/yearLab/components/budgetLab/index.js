@@ -5,13 +5,13 @@ import les from './index.less'
 
 const BudgetLab = ({
   dispatch,
-  index,
+  today,
 }) => {
   // props collect
   // func definition
   const handleShowBudget = () => {
     dispatch({
-      type: 'index/showModalBudget',
+      type: 'today/showModalBudget',
       show: true,
     })
   }

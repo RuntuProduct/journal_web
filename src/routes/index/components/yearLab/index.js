@@ -9,23 +9,23 @@ import ModalBudget from './components/modalBudget'
 const MonthLab = ({
   dispatch,
   loading,
-  index,
-  list,
+  today,
 }) => {
   // 获取属性
   const {
+    yearData,
     modalBudgetVisible,
     modalBudgetValue,
-  } = index
+  } = today
   // 属性定义
   const propsOfBudgetLab = {
     dispatch,
-    index,
+    today,
   }
   const propsOfTaskList = {
     dispatch,
     loading,
-    data: list,
+    data: yearData.taskList,
   }
   const propsOfModalBudget = {
     dispatch,

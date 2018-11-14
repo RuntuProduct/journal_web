@@ -7,13 +7,18 @@ import {
 const WeekLab = ({
   dispatch,
   loading,
-  list,
+  today,
 }) => {
+  // prop collect
+  const {
+    weekData,
+  } = today
+
   // 属性定义
   const propsOfTaskList = {
     dispatch,
     loading,
-    data: list,
+    data: weekData.taskList,
   }
 
   return (

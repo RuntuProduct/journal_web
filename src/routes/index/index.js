@@ -9,13 +9,13 @@ import Target from './components/target'
 const PageIndex = ({
   dispatch,
   loading,
-  index,
+  today,
 }) => {
   // 属性定义
   const propsOfTarget = {
     dispatch,
     loading,
-    index,
+    today,
   }
 
   return (
@@ -30,4 +30,4 @@ const PageIndex = ({
   );
 }
 
-export default connect(({ loading, index }) => ({ loading, index }))(PageIndex)
+export default connect(({ loading, today }) => ({ loading, today }))(PageIndex)

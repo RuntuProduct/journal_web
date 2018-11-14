@@ -8,5 +8,6 @@ module.exports = {
     task: '/task',
     taskComplete: '/task/complete',
     budgetIncome: '/budget/income',
+    summaryToday: '/summary/today',
   },
 }

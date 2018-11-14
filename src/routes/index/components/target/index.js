@@ -7,37 +7,28 @@ import YearLab from '../yearLab'
 const Target = ({
   dispatch,
   loading,
-  index,
+  today,
 }) => {
-  // 属性提取
-  const {
-    dayList,
-    weekList,
-    monthList,
-    yearList,
-  } = index
-
   // 属性定义
-  const propsOfWeekLab = {
+  const propsOfYearLab = {
     dispatch,
     loading,
-    list: weekList,
-  }
-  const propsOfDayLab = {
-    dispatch,
-    loading,
-    list: dayList,
+    today,
   }
   const propsOfMonthLab = {
     dispatch,
     loading,
-    list: monthList,
+    today,
   }
-  const propsOfYearLab = {
+  const propsOfWeekLab = {
     dispatch,
     loading,
-    list: yearList,
-    index,
+    today,
+  }
+  const propsOfDayLab = {
+    dispatch,
+    loading,
+    today,
   }
 
   return (

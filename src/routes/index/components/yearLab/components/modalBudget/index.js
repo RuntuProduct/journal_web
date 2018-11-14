@@ -26,7 +26,7 @@ const ModalBudget = ({
     title: '预算编辑',
     footer: null,
     onCancel: () => {
-      dispatch({ type: 'index/showModalBudget', show: false })
+      dispatch({ type: 'today/showModalBudget', show: false })
     },
   }
   const net = parseInt(income - outlay, 10)

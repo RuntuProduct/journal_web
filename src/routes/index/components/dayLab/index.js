@@ -8,13 +8,18 @@ import {
 const DayLab = ({
   dispatch,
   loading,
-  list,
+  today,
 }) => {
+  // prop collect
+  const {
+    dayData,
+  } = today
+
   // 属性定义
   const propsOfTaskList = {
     dispatch,
     loading,
-    data: list,
+    data: dayData.taskList,
   }
 
   return (

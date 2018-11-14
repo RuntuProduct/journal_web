@@ -28,8 +28,8 @@ const app = dva({
 app.use(createLoading())
 
 // 3. Register global model
-app.model(require('./models/app').default)
-app.model(require('./models/model.index').default)
+app.model(require('./models/model.app').default)
+app.model(require('./models/model.today').default)
 // app.model(require('./models/quest').default)
 
 // 4. Router

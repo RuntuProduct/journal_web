@@ -7,13 +7,18 @@ import {
 const MonthLab = ({
   dispatch,
   loading,
-  list,
+  today,
 }) => {
+  // prop collect
+  const {
+    monthData,
+  } = today
+
   // 属性定义
   const propsOfTaskList = {
     dispatch,
     loading,
-    data: list,
+    data: monthData.taskList,
   }
 
   return (
