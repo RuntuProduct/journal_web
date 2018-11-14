@@ -8,6 +8,7 @@ module.exports = {
     task: '/task',
     taskComplete: '/task/complete',
     budgetIncome: '/budget/income',
+    budgetCal: '/budget/calculation',
     summaryToday: '/summary/today',
   },
 }

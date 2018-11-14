@@ -24,7 +24,6 @@ class ModalEdit extends React.Component {
     const handleSubmit = () => {
       form.validateFields((err, values) => {
         if (!err) {
-          console.log(values)
           handleChange(values)
         }
       })

@@ -15,7 +15,6 @@ const MonthLab = ({
   const {
     yearData,
     modalBudgetVisible,
-    modalBudgetValue,
   } = today
   // 属性定义
   const propsOfBudgetLab = {
@@ -30,7 +29,7 @@ const MonthLab = ({
   const propsOfModalBudget = {
     dispatch,
     visible: modalBudgetVisible,
-    value: modalBudgetValue,
+    budget: yearData.budget,
   }
 
   return (

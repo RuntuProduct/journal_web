@@ -1,8 +1,9 @@
 import { request, api } from '@net'
 
-export function setIncomeBudget(data) {
+export function getBudgetCalculation(data) {
   return request({
     method: 'get',
-    url: api.budgetIncome,
+    url: api.budgetCal,
+    data,
   })
 }

@@ -12,13 +12,9 @@ import MoneyLab from '../moneyLab'
 const ModalBudget = ({
   dispatch,
   visible,
-  value,
+  budget,
 }) => {
   // props collect
-  const {
-    outlay,
-    income,
-  } = value
 
   // props definition
   const propsOfModal = {
@@ -29,27 +25,18 @@ const ModalBudget = ({
       dispatch({ type: 'today/showModalBudget', show: false })
     },
   }
-  const net = parseInt(income - outlay, 10)
 
   // function difinition
-  const handleBudgetChange = (val) => {
-    console.log('after value: ', val)
-  }
   const initMoneyLab = (valueType, rateType) => {
-    let value = income
-    if (valueType === 'outlay') {
-      value = outlay
-    } else if (valueType === 'net') {
-      value = net
+    const propsOfMoneyLab = {
+      dispatch,
+      budget,
+      valueType,
+      rateType,
+      canEdit: true,
     }
     return (
-      <MoneyLab
-        valueType={valueType}
-        value={value}
-        rateType={rateType}
-        canEdit={true}
-        handleChange={handleBudgetChange}
-      />
+      <MoneyLab {...propsOfMoneyLab} />
     )
   }
 

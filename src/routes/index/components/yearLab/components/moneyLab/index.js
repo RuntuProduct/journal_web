@@ -25,8 +25,9 @@ class MoneyLab extends React.Component {
   render () {
     // props collect
     const {
+      dispatch,
+      budget,
       valueType, //income,outlay,net
-      value,
       rateType, // year,month,week,day
       canEdit,
       handleChange,
@@ -37,24 +38,11 @@ class MoneyLab extends React.Component {
     const that = this
 
     // props count
-    const allMonth = getEntireMonth()
-    const allWeek = getEntireWeek()
-    const allDay = getEntireDay()
-    const mathValue = parseInt(value, 10)
-    if (!mathValue) {
-      throw new Error('invalid value')
-    }
     let rateValue
-    if (rateType === 'year') {
-      rateValue = mathValue.toFixed(0)
-    } else if (rateType === 'month') {
-      rateValue = (mathValue / allMonth).toFixed(0)
-    } else if (rateType === 'week') {
-      rateValue = (mathValue / allWeek).toFixed(0)
-    } else if (rateType === 'day') {
-      rateValue = (mathValue / allDay).toFixed(0)
+    if (valueType === 'income' || valueType === 'outlay') {
+      rateValue = budget[`${valueType}_${rateType}`]
     } else {
-      throw new Error(`invalid value ${rateType}`)
+      rateValue = budget[`income_${rateType}`] - budget[`outlay_${rateType}`]
     }
 
     const typeClass = les[valueType]
@@ -62,6 +50,7 @@ class MoneyLab extends React.Component {
     // function definition
     const updataValue = ({ value }) => {
       that.editModalHide()
+      dispatch({})
       if (rateType === 'year') {
         handleChange({ value })
       } else if (rateType === 'month') {
@@ -78,12 +67,11 @@ class MoneyLab extends React.Component {
       handleHide: this.editModalHide,
       handleChange: updataValue,
       visible: editModalVisible,
-      baseValue: rateValue,
     }
 
     return (
       <div className={`${les.moneyLab} ${typeClass}`}>
-        <span>{rateValue}</span>
+        <span>{rateValue || 0}</span>
         {
           canEdit &&
           <Button

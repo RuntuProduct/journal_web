@@ -8,7 +8,7 @@ import {
   getToday,
 } from '@/services/summary'
 import {
-  setIncomeBudget,
+  getBudgetCalculation,
 } from '@/services/budget'
 
 export default moduleExtend(model, {
@@ -16,6 +16,7 @@ export default moduleExtend(model, {
 
   state: {
     yearData: {
+      budget: {},
       taskList: [],
     },
     monthData: {
@@ -28,10 +29,6 @@ export default moduleExtend(model, {
       taskList: [],
     },
     modalBudgetVisible: true,
-    modalBudgetValue: {
-      outlay: 100000,
-      income: 200000,
-    },
   },
 
   subscriptions: {
@@ -84,11 +81,11 @@ export default moduleExtend(model, {
         throw new Error(data)
       }
     },
-    /** 更新收入值 */
-    * updateIncome ({ payload }, { call, put }) {
-      const { success, data } = yield call(setIncomeBudget, payload)
+    /** 更新预算设置 */
+    * getBudgetCalculation ({ payload }, { call, put }) {
+      const { success, data } = yield call(getBudgetCalculation, payload)
       if (success) {
-        //
+        // yield put({ type: 'getList' })
       } else {
         throw new Error(data)
       }
