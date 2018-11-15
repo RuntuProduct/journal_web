@@ -8,7 +8,7 @@ const BaseLab = ({
   return (
     <div className={`${les.container} ${className || ''}`}>
       <div className={les.title}>{title}</div>
-      <div>{children}</div>
+      <div className={les.content}>{children}</div>
     </div>
   )
 }

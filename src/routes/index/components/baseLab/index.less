@@ -1,13 +1,23 @@
 @hei: 26px;
 
 .container {
+  display: flex;
+  flex-direction: column;
+  background-color: @theme_color_white;
+
   .title {
     height: @hei;
     line-height: @hei;
+    padding: 0 @layout_spacing_horizontal;
     font-size: 14px;
   
     :global(.anticon) {
       margin-right: 4px;
     }
+  }
+  .content {
+    flex: 1;
+    position: relative;
+    padding: 0 @layout_spacing_horizontal @layout_spacing_vertical;
   }
 }
