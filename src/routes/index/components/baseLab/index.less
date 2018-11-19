@@ -2,6 +2,7 @@
 
 .container {
   display: flex;
+  position: relative;
   flex-direction: column;
   background-color: @theme_color_white;
 
@@ -40,5 +41,9 @@
       display: block;
       font-size: 18px;
     }
+  }
+  .extraCon {
+    position: absolute;
+    visibility: hidden;
   }
 }

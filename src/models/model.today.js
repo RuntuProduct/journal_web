@@ -19,6 +19,7 @@ export default moduleExtend(model, {
       budget: {},
       taskList: [],
     },
+    yearCreateVisible: false,
     monthData: {
       taskList: [],
     },
@@ -52,6 +53,13 @@ export default moduleExtend(model, {
         yield put({ type: 'getList' })
       })
       // console.log(ifGe)
+    },
+    /** 显示隐藏创建年纪弹窗 */
+    * showModalYearCreate ({ show }, { put }) {
+      yield put({
+        type: 'updateState',
+        payload: { yearCreateVisible: show },
+      })
     },
     /** 显示隐藏预算编辑弹窗 */
     * showModalBudget ({ show }, { put }) {

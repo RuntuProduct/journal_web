@@ -7,6 +7,8 @@ const BaseLab = ({
   className,
   title,
   data,
+  extra,
+  onCreate = () => {},
   children,
 }) => {
   return (
@@ -15,10 +17,15 @@ const BaseLab = ({
       <div className={les.content}>
         { data ?
           children :
-          <div className={les.noContent}>
+          <div className={les.noContent} onClick={() => onCreate()}>
             <div>添加{title}纪</div>
             <Icon type="plus-circle" />
           </div>
+        }
+        {
+          typeof extra === 'function' ?
+          <div className={les.extraCon}>{extra()}</div> :
+          <div className={les.extraCon}>{extra}</div>
         }
       </div>
     </div>
