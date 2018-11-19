@@ -9,7 +9,7 @@
     height: @hei;
     line-height: @hei;
     padding: 0 @layout_spacing_horizontal;
-    font-size: 14px;
+    font-size: 16px;
   
     :global(.anticon) {
       margin-right: 4px;
@@ -19,5 +19,26 @@
     flex: 1;
     position: relative;
     padding: 0 @layout_spacing_horizontal @layout_spacing_vertical;
+  }
+  .noContent {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed @theme_color_06;
+    border-radius: 4px;
+    background-color: @theme_color_gray;
+    cursor: pointer;
+
+    & > div {
+      height: 26px;
+      line-height: 26px;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    & > :global(.anticon) {
+      display: block;
+      font-size: 18px;
+    }
   }
 }

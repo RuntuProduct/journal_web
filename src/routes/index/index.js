@@ -8,7 +8,7 @@ const PageIndex = ({
   today,
 }) => {
   // 属性定义
-  const propsOfTarget = {
+  const propsOfRecordLab = {
     dispatch,
     loading,
     today,
@@ -16,7 +16,7 @@ const PageIndex = ({
 
   return (
     <div className={les.contaienr}>
-      <RecordLab />
+      <RecordLab {...propsOfRecordLab} />
     </div>
   );
 }

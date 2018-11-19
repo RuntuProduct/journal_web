@@ -4,14 +4,25 @@ import WeekLab from '../weekLab'
 import MonthLab from '../monthLab'
 import YearLab from '../yearLab'
 
-const RecordLab = () => {
+const RecordLab = ({
+  dispatch,
+  loading,
+  today,
+}) => {
+  // props definition
+  const propsOfYearLab = {
+    dispatch,
+    loading,
+    today,
+  }
+
   return (
     <div className={les.container}>
       <div className={les.floatCon}>
         <DayLab />
         <WeekLab />
         <MonthLab />
-        <YearLab />
+        <YearLab {...propsOfYearLab} />
       </div>
     </div>
   )
